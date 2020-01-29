@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  Watch And Code
+  <script>
+    //Creating todoList OBJ
+    var todoList = {
+      todos: [],
+      //Display todos is a method
+      displayTodos: function () {
+        console.log("My Todos:");
+       //Here the displayTodo would show only the todoText
+       // using for would iterate through the whole Array and print out todotext
+        for (var i = 0; i < this.todos.length; i++) {
+          console.log(this.todos[i].todoText)
+        }
+      },
+      addTodo: function (todoText) {
+        this.todos.push({
+          //SOS :here we use property todoText,completed of type Obj
+          // not text
+          todoText: todoText,
+          completed: false
+        });
+        this.displayTodos();
+      },
+      changeTodo: function (position, newTodoValue) {
+        //here we use (dot notation).As we have of type obj
+        // give us this opportunity to use a property like that
+        this.todos[position].todoText = newTodoValue;
+        this.displayTodos();
+      },
+      deleteTodo: function (position) {
+        this.todos.splice(position, 1);
+        this.displayTodos();
+      },
+      toggleCompleted: function (position) {
+        //***SOS****Very good practice to save on a different variable
+        // eg :todo the whole "this.todos[position]" so DRY
+        // IF we did not use the variable to store all this code we should
+        //**** write this.todos[position].completed=!this.todos[position].completed
+        var todo = this.todos[position];
+        todo.completed = !todo.completed;
+        this.displayTodos();
+      },
+    };
+  </script>
+</body>
+
+</html>
